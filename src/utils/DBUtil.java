@@ -1,5 +1,7 @@
 package utils;
 
+// データベースへの接続を「Hibernate」に任せる処理
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
