@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,9 +30,13 @@ public class IndexServlet extends HttpServlet {
 	    // 問い合わせ結果をgetResultList()メソッドを使用しリスト形式で取得
 	    List<Task> tasks = em.createNamedQuery("getAllTasks", Task.class).getResultList();
 	    
-	    // データ登録の件数
-		response.getWriter().append(Integer.valueOf(tasks.size()).toString());
-		
-		em.close();
+	    em.close();
+	    // データベースから取得したtask一覧をリクエストスコープにセット
+	    request.setAttribute("tasks", tasks);
+	    
+	    // ビューとなるindex.jspを指定
+	    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/tasks/index.jsp");
+	    // ビューとなるindex.jspを呼び出す
+	    rd.forward(request, response);
 	}
 }
