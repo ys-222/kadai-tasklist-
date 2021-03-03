@@ -9,7 +9,8 @@
 
     </div>
 </c:if>
-<label for="title">タイトル</label>
+<label for="title">タイトル<br />
+</label>
 <!--リクエストスコープのtaskオブジェクトからデータを参照し、入力内容の初期値として表示-->
 <input type="text" name="title" value="${task.title}" />
 <br /><br />

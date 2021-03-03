@@ -8,15 +8,15 @@ import models.Task;
 
     public class TaskValidator {
         // バリデーションを実行する
-        public static List<String> validate(Task m) {
+        public static List<String> validate(Task t) {
             List<String> errors = new ArrayList<String>();
 
-            String title_error = validateTitle(m.getTitle());
+            String title_error = validateTitle(t.getTitle());
             if(!title_error.equals("")) {
                 errors.add(title_error);
             }
 
-            String content_error = validateContent(m.getContent());
+            String content_error = validateContent(t.getContent());
             if(!content_error.equals("")) {
                 errors.add(content_error);
             }
@@ -36,7 +36,7 @@ import models.Task;
         // メッセージの必須入力チェック
         private static String validateContent(String content) {
             if(content == null || content.equals("")) {
-                return "メッセージを入力してください。";
+                return "タスクを入力してください。";
             }
 
             return "";
